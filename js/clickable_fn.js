@@ -11,11 +11,19 @@ function createBoard(){
   var newRedSquares = [];
   var content1 = $('.box:contains("Player 1")').html();
   var content2 = $('.box:contains("Player 2")').html();
+<<<<<<< HEAD
   $('#14').html()='';
   $('#74').html()='';
   $('#'+p1pos).html()=content1;
   $('#'+p2pos).html()=content2;
 
+=======
+  $('#14').html('');
+  $('#74').html('');
+  $('#'+p1pos).html(content1);
+  $('#'+p2pos).html(content2);
+  
+>>>>>>> 91d8d00a5ec3442b9b10270454644a71b6652f8e
   redSuares.forEach(function(entry){
     newRedSquares.push(parseInt(entry));
   });
