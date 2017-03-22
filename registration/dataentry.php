@@ -17,8 +17,8 @@ $valid="yes";
 	$resultforstring = mysql_query($queryforstring);	
 	$countforstring = mysql_num_rows($resultforstring); // if string found then register
 	$result=mysql_fetch_row($resultforstring);
-	echo $result;
-	if($result!="yes"){
+	echo $result[0];
+	if($result[0]!="yes"){
 			$valid="no";
 			echo $valid;
 		}
@@ -40,7 +40,7 @@ $valid="yes";
 
 		if(mysql_query("INSERT INTO playerdb(string,pname1,collegename1,pmobile1,pname2,collegename2,pmobile2)  VALUES('$b','$a','$c','$d','$e','$g','$h')"))
 		{	
-			mysql_query("UPDATE string SET valid='no' WHERE string=".$b)
+			mysql_query("UPDATE string SET valid='no' WHERE string='$b'") or die("error in what i wanted to see.");
 
 			?>			
 			<script>alert('successfully registered ');window.location="./";</script>

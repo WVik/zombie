@@ -106,6 +106,11 @@ include 'dbconnect.php';   ?>
      #questions{
       display:none;
      }
+
+     .playerPos{
+       color:black;
+     }
+
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -140,7 +145,7 @@ for ($x = 1; $x <= 49; $x++) {
   <?php 
   $string=$_SESSION['user'];
   
-  $gamedetails=mysql_query("SELECT pl1pos,pl2pos,redbox,rno from gameboard WHERE string='$string'") or die("error in query");
+  $gamedetails=mysql_query("SELECT pl1pos,pl2pos,redbox,rno,turn from gameboard WHERE string='$string'") or die("error in query");
   $rowgamedetails=mysql_fetch_row($gamedetails);
 
    ?>
@@ -148,6 +153,7 @@ for ($x = 1; $x <= 49; $x++) {
   <p id="p2pos" hidden><?php echo $rowgamedetails[1]; ?></p>
   <p id="redBox" hidden><?php echo $rowgamedetails[2]; ?></p>
   <p id="rNum" hidden><?php echo $rowgamedetails[3]; ?></p>
+  <p id="turn" hidden><?php echo $rowgamedetails[4]; ?></p>
   </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -180,10 +186,7 @@ for ($x = 1; $x <= 49; $x++) {
 	  </div>
 	 
       <div id="game" style="width:100%;">
-       <div class="scorecontainer scorecontainer1">
-          Player 1
-         <div class="score score1">0</div>
-       </div>
+       
       <table>
         <tr class="gamerow">
           <td class="box btn btn-primary box1 11" id="11"></td>
@@ -251,8 +254,7 @@ for ($x = 1; $x <= 49; $x++) {
 
 
       </table>
-      <div class="scorecontainer scorecontainer2">Player 2
-      <div class="score score2">0</div></div>
+  
       </div> 
        <!-- Game Panel Div Ends -->
      

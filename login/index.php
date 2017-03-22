@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION['user'])!="")
+{
+  header("Location: ../game.php");
+}
+else{
+?>
 <html>
 
 <head>
@@ -30,3 +38,6 @@
 </body>
 
 </html>
+<?php
+}
+?>
