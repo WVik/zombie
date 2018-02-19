@@ -1,7 +1,7 @@
 # Zombie Game
 <html>
 <head>
-<title>Gameplay and Readme</title>
+<img src="https://github.com/WVik/zombie/blob/master/img/zombie.png">
 </head>
 <body>
 
