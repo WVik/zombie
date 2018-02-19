@@ -1,56 +1,3 @@
-<<<<<<< HEAD
-$(document).ready(function(){
-  var play = 1;
-  var rNum = parseInt($('#rNum').html());
-  var pattern = /\d{2}/g;
-
-function createBoard(){
-  p1pos = parseInt($('#p1pos').html());
-  p2pos = parseInt($('#p2pos').html());
-  redSuares = $('#redBox').html();
-  
-  var newRedSquares = [];
-  var content1 = $('.box:contains("Player 1")').html();
-  var content2 = $('.box:contains("Player 2")').html();
-<<<<<<< HEAD
-  $('#14').html()='';
-  $('#74').html()='';
-  $('#'+p1pos).html()=content1;
-  $('#'+p2pos).html()=content2;
-
-=======
-  $('#14').html('');
-  $('#74').html('');
-  $('#'+p1pos).html(content1);
-  $('#'+p2pos).html(content2);
-  
->>>>>>> 91d8d00a5ec3442b9b10270454644a71b6652f8e
-  redSuares.forEach(function(entry){
-    newRedSquares.push(parseInt(entry));
-  });
-
- newRedSquares.forEach(function(entry){
-  $('#'+entry).addClass('dead');
-  });
-
-}
-  
-   
-
-  createBoard();
-  
-
-  var enteredAnswer="";
-  var correctAnswer="";
-  var redSquares=[];  // Stores the squares which are blocked.
-  var p1pos=14;       // Stores current position of player 1
-  var p2pos=74;       // Stores current position of player 2
-  var p1score=0;
-  var p2score=0;
-
-
-=======
->>>>>>> 454dd0683693eb6f6cb25918874a758536a3501f
 clickable = function(a){
       var clickables = [];
       if (a==11) {
@@ -107,7 +54,7 @@ clickable = function(a){
 
 
 function colorify(tiles,p){                  // Function to colour the squares where the user can move.
-  
+
   for(var k=0;k<tiles.length;k++){
     if(tiles[k]!=p)
       $('#'+tiles[k]).addClass('movable');
@@ -122,12 +69,31 @@ function decolorify(tiles){                  // Function to undo the changes don
   for(var k=0;k<tiles.length;k++){
     $('#'+tiles[k]).removeClass('movable');
   }
-} 
-  
-  
+}
+
+
+
+
 
 
 $(document).ready(function(){
+
+
+
+  //var modal = document.getElementById('myModal');
+
+  // Get the button that opens the modal
+  //var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  //var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on the button, open the modal
+
+var p1name = $('#p1name').html();
+var p2name = $('#p2name').html();
+
+
   var play = 1;
   var rNum = parseInt($('#rNum').html());
   var pattern = /\d{2}/g;
@@ -182,7 +148,7 @@ function createBoard(){
   if(redSquares==null){
     redSquares=[];
   }
-  
+
   var newRedSquares = [];
   var content1 = $('.box:contains("Player 1")').html();
   var content2 = $('.box:contains("Player 2")').html();
@@ -199,7 +165,7 @@ function createBoard(){
   $('#'+p2pos).removeClass('btn-primary');
   $('#'+p1pos).addClass('btn-default');
   $('#'+p2pos).addClass('btn-default');
-    
+
 
   redSquares.forEach(function(entry){
     newRedSquares.push(parseInt(entry));
@@ -212,54 +178,54 @@ function createBoard(){
   //$('.box').click();
    if(play==1 ){
     colorify(clickable(p1pos));
- $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+ $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>'+p1name+' </em> its time to move your Zombie.</h4>');
   }
   else if(play==3 ){
    colorify(clickable(p2pos));
- $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
+ $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>'+p2name+' </em> its time to move your Zombie.</h4>');
   }
-  
-   
+
+
    if(play==2){
-    
-    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
+
+    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>'+p1name+' </em> its time to Eat up.</h4>');
 
   }
- 
+
   else if(play==4){
-  
-    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 2 </em> its time to Eat up.</h4>');
+
+    $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>'+p2name+'</em> its time to Eat up.</h4>');
   }
 
  }
-  
+
   createBoard();
-    
+
 
   var enteredAnswer="";
   var correctAnswer="";
     // Stores the squares which are blocked.
-        
+
   var p1score=0;
   var p2score=0;
 
 
 
 
-  
+
   var s=$('.box1:contains("Player 1")').attr('id');     // Block to colour the places where player 1 can move initially
   var t=parseInt(s);
-  
+
  //colorify(clickable(t),0);
-  
-  
+
+
 function eatSpace(a){
   $("#" +  a).addClass('dead');
 
-  
-} 
 
-  
+}
+
+
 function displayQuestion(num){
   var id = parseInt(num);
   var offset = id%10;
@@ -269,14 +235,14 @@ function displayQuestion(num){
     qnum++;
   console.log(qnum);
   var question = $('#prompt'+qnum).text();
-  enteredAnswer = prompt(question); 
-  correctAnswer = $('#q'+qnum).html(); 
+  enteredAnswer = prompt(question);
+  correctAnswer = $('#q'+qnum).html();
   if(enteredAnswer==null){
     enteredAnswer="";
   }
 
-} 
-  
+}
+
 function checkAnswer(){
   if(SHA1(enteredAnswer)==correctAnswer)
     return true;
@@ -285,36 +251,36 @@ function checkAnswer(){
 
 }
 
-  
-  
+
+
 //var s=$('.box:contains("Player 1")').attr('id');
 //var s1 = parseInt(s);
 $(".box").click(function(){
-  
+
   //console.log(redSquares);
   if($(this).hasClass('dead')){
     return;
    }
- 
+
   if (play==4) {
     var pl1 = $('.box:contains("Player 1")').attr("id");
     var pl2 = $('.box:contains("Player 2")').attr("id");
     var id1 = $(this).attr("id");
-    
+
 
     if($(this).hasClass("playerPos")){
       return;
-    }   
+    }
 
     displayQuestion(id1);
     if (id1!=pl1 && id1!=pl2) {
-     
+
       if (checkAnswer()) {
         eatSpace(id1);
         redSquares.push(id1);
-        
+
          var stringredsquares=redSquares.toString();
-          console.log("string :-"+stringredsquares); 
+          console.log("string :-"+stringredsquares);
          ajaxcallred(stringredsquares);
 
         //ADD AJAX CALL
@@ -328,14 +294,14 @@ $(".box").click(function(){
       colorify(clickable(parseInt(pl1)));
        if (q.length==0) {
       //alert("Player1 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em> '+p2name+' </em> Wins.</h4>');
     }else{
         if (q2.length==0) {
-          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
-        } 
+          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>'+p1name+' </em> Wins.</h4>');
+        }
         else {
 
-      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 1 </em> its time to move your Zombie.</h4>');
+      $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>'+p1name+' </em> its time to move your Zombie.</h4>');
       return;
       }
     }
@@ -354,7 +320,7 @@ $(".box").click(function(){
     var content,new_box;
     if (q.length == 0) {
       //alert("Player2 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><stylerong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
+      $('.alert').html('<h4 style="text-align: center;"><stylerong>Wohoo ! Hurray ! </strong> <em>'+p1name+' </em> Wins.</h4>');
     }
 
          console.log(q);
@@ -367,7 +333,7 @@ $(".box").click(function(){
     //ADD AJAX CALL
 
     decolorify(clickable(id));   //Uncolour the coloured changes.
-    
+
     $('#' + s).html(' ');
     $('#' + s).removeClass("btn-defualt");
     $('#' + s).addClass("btn-primary");
@@ -375,18 +341,18 @@ $(".box").click(function(){
     $('#' + b).html(content);
     $('#' + b).removeClass("btn-primary");
     $('#' + b).addClass("btn-defualt");
-    
+
 
 
     play = 4;
     ajaxcallturn(4);
    // alert("Now it's player 2's time to eat up some space.");
-   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 2 </em> its time to Eat up.</h4>');
+   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>'+p2name+' </em> its time to Eat up.</h4>');
     }
   }
   }
 
-  
+
 
 
 
@@ -395,42 +361,42 @@ $(".box").click(function(){
     var pl2 = $('.box:contains("Player 2")').attr("id");
     //alert(pl1);
     var id1 = $(this).attr("id");
-    
+
     if($(this).hasClass("playerPos")){
       return;
     }
-     
+
     if (id1!=pl1 && id1!=pl2) {
-    
+
        displayQuestion(id1);
 
       if (checkAnswer()) {
         console.log("right");
-        eatSpace(id1);                 
+        eatSpace(id1);
         redSquares.push(id1);
         var stringredsquares=redSquares.toString();  //ADD AJAX CALL
         ajaxcallred(stringredsquares);
 
        // $(this).removeAttr("id");
-        }  
+        }
        var q2 =clickable(parseInt(pl2));
        var q =clickable(parseInt(pl1));
         colorify(clickable(parseInt(pl2)));  // Colour movable squares
-        play = 3; 
-        ajaxcallturn(3); 
+        play = 3;
+        ajaxcallturn(3);
         console.log(q);
         if (q.length===0) {
-          
+
       //alert("Player1 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>'+p2name+' </em> Wins.</h4>');
     }
     else{
         if (q2.length==0) {
-          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 1 </em> Wins.</h4>');
-        } 
+          $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>'+p1name+' </em> Wins.</h4>');
+        }
         else {
-      
-        $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>Player 2 </em> its time to move your Zombie.</h4>');
+
+        $(".alert").html('<h4 style="text-align: center;"><strong>Move ! Move ! </strong> <em>'+p2name+' </em> its time to move your Zombie.</h4>');
      }
    }
     }
@@ -447,15 +413,15 @@ $(".box").click(function(){
     var content,new_box;
     if (q.length===0) {
       //alert("Player1 Lost.");
-      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>Player 2 </em> Wins.</h4>');
+      $('.alert').html('<h4 style="text-align: center;"><strong>Wohoo ! Hurray ! </strong> <em>'+p2name+'</em> Wins.</h4>');
     }
-    
+
     colorify(q);  // Colour movable squares
          console.log(q);
     if (q.indexOf(a) != -1) {
-    
+
     if (confirm('Do you want to move here ?')) {
-     
+
     content = $('.box:contains("Player 1")').html();
      p1pos = id;
      //ADD AJAX CALL
@@ -475,13 +441,13 @@ $(".box").click(function(){
     play = 2;
     ajaxcallturn(2);
    // alert("Now it's player 1's time to eat up some space.");
-   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>Player 1 </em> its time to Eat up.</h4>');
+   $(".alert").html('<h4 style="text-align: center;"><strong>Eat ! Eat ! </strong> <em>'+p1name+' </em> its time to Eat up.</h4>');
     }
   }
-  
+
   }
 
-  
+
   });
 
 
